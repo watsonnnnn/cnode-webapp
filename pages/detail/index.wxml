@@ -2,9 +2,9 @@
 <import src="bottom.wxml"/>
 
 <view class="index-container">
-  <view class="title">
+  <view class="title" style="padding:0 10px 0 4px">
     <view bindtap="backTonew">
-    <image src="../../static/左箭头.png" class="index-img"/>
+    <image src="../../static/左箭头.png" class="index-img" style="width:16px;height:16px;"/>
     <text>最新</text>
     </view>
     <text>详情</text>
