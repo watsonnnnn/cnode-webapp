@@ -1,0 +1,54 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+/**/
+@import '../../static/topbar.wxss';
+
+.index-item{
+  height: 70px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding:18px 8px 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.item-author{
+  font-size: 12px;
+  color: #888;
+}
+.item-type{
+  font-size: 14px;
+  background: #eee;
+  padding: 0 4px;
+  width: 30px;
+  display: inline-block;
+  border-radius: 2px;
+  margin-right: 4px;
+  color: #666;
+}
+
+.item-type-g{
+  color: #99ff00;
+}
+.item-hover{
+  background: #ccc;
+}

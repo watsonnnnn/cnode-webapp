@@ -1,0 +1,27 @@
+<!--index.wxml
+这种子模板的数据只能来自父的data
+-->
+<template name="item">
+  <view class="index-item" hover-class="item-hover" bindtap="clickItem" data-id="{{item.id}}">
+    <text>{{item.title}}</text>
+    <view >
+      <text class="item-type" style="background:{{item.top?'#33ff00':''}}">{{item.top?'置顶':types[item.tab]}}</text>
+      <text class="item-author">{{item.author.loginname}}</text>
+    </view>
+  </view>
+</template>
+
+<view class="index-container">
+  <view class="title">
+    <image src="../../static/目录.png" class="index-img"/>
+    <text>最新</text>
+    <image src="../../static/修改.png" class="index-img"/>
+  </view>
+</view>
+
+<view style="padding-top:50px">
+  <view wx:key="{{index}}" wx:for="{{list}}">
+    <template is="item" data="{{item,types}}" />
+  </view>
+</view>
+

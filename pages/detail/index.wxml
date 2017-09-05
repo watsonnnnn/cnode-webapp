@@ -1,0 +1,26 @@
+<import src="../../static/wxParse/wxParse.wxml"/>
+<import src="bottom.wxml"/>
+
+<view class="index-container">
+  <view class="title">
+    <view bindtap="backTonew">
+    <image src="../../static/左箭头.png" class="index-img"/>
+    <text>最新</text>
+    </view>
+    <text>详情</text>
+    <image src="../../static/分享.png" class="index-img"/>
+  </view>
+</view>
+<view style="padding:50px 10px">
+  <view style="margin-bottom:6px">
+    <text style="font-size:16px;font-weight:bolder">{{detail.title}}</text>
+  </view>
+  <view style="">
+    <image src="{{detail.author.avatar_url}}" style="height:20px;width:20px;vertical-align:middle"/>
+    <text style="font-size:14px;color:#66ccff">{{detail.author.loginname}}</text>
+  </view>
+  <view style="padding:6px 0 10px;font-size:14px;">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+</view>
+<template is="bottomsubmit"/>

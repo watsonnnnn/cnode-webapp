@@ -1,0 +1,24 @@
+@import '../../static/topbar.wxss';
+@import '../../static/wxParse/wxParse.wxss';
+.bottom{
+  position: fixed; 
+  z-index: 1;
+  bottom:0; 
+  width:100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  padding: 6px;
+  line-height:30px;
+}
+.bottom input{
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 16px;
+  margin-right: 8px;
+  background: #DBDBDB;
+  width:80%;
+  height:30px;
+  line-height: 30px;
+  float:left;
+  padding-left: 4px;
+}
