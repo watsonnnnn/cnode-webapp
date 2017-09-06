@@ -1,8 +1,10 @@
 import WxParse from '../../static/wxParse/wxParse.js'
 
+
 Page({
+  data:{
+  },
   onLoad(){
-    console.log('detail load')
     let cpage = getCurrentPages().slice(-1)
     console.log(cpage)
     if(!cpage || !cpage[0] || cpage[0].options.id == 'undefined'){
@@ -17,8 +19,14 @@ Page({
       url: 'https://cnodejs.org/api/v1/topic/'+cpage[0].options.id,
       success(res){
         let data = res.data.data
+        data.last_reply_at = getApp().formatRelativeTime(data.last_reply_at)
+        data.replies.forEach(function(item,index){
+          item.create_at_relative = getApp().formatRelativeTime(item.create_at)
+          WxParse.wxParse('replyContent'+index, 'html', item.content, that)
+        })
         WxParse.wxParse('content','md',data.content,that)
         that.setData({detail: data})
+        console.log(that.data)
       }
     })
   },
@@ -27,7 +35,7 @@ Page({
     wx.navigateBack({delta:1})
   },
   onPullDownRefresh(){
-    console.log('pull down')
+    this.onLoad()
   },
   onReachBottom(){
     console.log('reach bottom')

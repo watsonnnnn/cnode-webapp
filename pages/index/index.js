@@ -5,7 +5,10 @@ Page({
   data: {
     userInfo: ['999'],
     list: [1,2,3,4,5,6,7,8,9,10],
-    types:{'ask':'问答','share':'分享','job':'工作','good':'精华'}
+    types:{'ask':'问答','share':'分享','job':'工作','good':'精华'},
+    hasRefresh:false,
+
+    current:1
   },
   //事件处理函数
   bindViewTap: function() {
@@ -22,11 +25,18 @@ Page({
       url: 'https://cnodejs.org/api/v1/topics',
       data:{
         limit:20,
-        page:1
+        page:that.data.current
       },
       success(res){
-        that.setData({list:res.data.data})
+        let data = res.data.data
+        data.forEach(function(item){
+          item.create_at = getApp().formatRelativeTime(item.create_at)
+        })
+        that.setData({ list: data})
       }
     })
+  },
+  onPullDownRefresh(){
+    this.onLoad()
   }
 })

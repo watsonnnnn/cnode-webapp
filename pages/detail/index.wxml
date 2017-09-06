@@ -1,26 +1,36 @@
 <import src="../../static/wxParse/wxParse.wxml"/>
 <import src="bottom.wxml"/>
 
-<view class="index-container">
+<!-- <view class="index-container">
   <view class="title" style="padding:0 10px 0 4px">
     <view bindtap="backTonew">
-    <image src="../../static/左箭头.png" class="index-img" style="width:16px;height:16px;"/>
-    <text>最新</text>
+    <image src="../../static/左箭头.png" class="index-img" style="height:22px;width:22px"/>
+    
     </view>
     <text>详情</text>
     <image src="../../static/分享.png" class="index-img"/>
   </view>
-</view>
-<view style="padding:50px 10px">
+</view> -->
+<view style="padding:10px;padding-bottom:50px">
   <view style="margin-bottom:6px">
     <text style="font-size:16px;font-weight:bolder">{{detail.title}}</text>
   </view>
-  <view style="">
+  <view style="height:26px;line-height:26px;padding-right:40px;margin-bottom:10px;">
     <image src="{{detail.author.avatar_url}}" style="height:20px;width:20px;vertical-align:middle"/>
     <text style="font-size:14px;color:#66ccff">{{detail.author.loginname}}</text>
+    <text style="font-size:14px;color:#ccc;opacity:0.8;float:right;">{{detail.last_reply_at}}</text>
   </view>
   <view style="padding:6px 0 10px;font-size:14px;">
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+  <view style="overflow:hidden">
+    <view wx:key="{{index}}" wx:for="{{detail.replies}}" class="item-reply">
+      <text style="color:#66ccff">{{item.author.loginname}}</text>
+      <text style="float:right;padding-right:30px">{{item.create_at_relative}}</text>
+      <view style="margin-top:10px">
+        <template is="wxParse" data="{{wxParseData:replyContent1.nodes}}"/>
+      </view>
+    </view>
   </view>
 </view>
 <template is="bottomsubmit"/>

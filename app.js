@@ -1,4 +1,6 @@
 //app.js app.json中pages配置第一项为首页
+import { formatRelativeTime } from './utils/util.js'
+
 App({
   onLaunch() {
     //调用API从本地缓存中获取数据
@@ -14,5 +16,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  formatRelativeTime
 })

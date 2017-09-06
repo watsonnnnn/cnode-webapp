@@ -1,12 +1,12 @@
 .index-container{
-  background: black;
-  height: 50px;
+  background: #DBDBDB;
+  height: 50px; 
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  position: fixed;
+   /* position: fixed;  */
   z-index: 1;
 }
 .title{
@@ -19,7 +19,7 @@
   padding: 0 10px;
 }
 .title text{
-  color: #fff;
+  color: #808080;
   letter-spacing: 2px;
 }
 .index-img{
