@@ -23,14 +23,19 @@
   <view style="padding:6px 0 10px;font-size:14px;">
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view>
-  <view style="overflow:hidden">
+  <view>
     <view wx:key="{{index}}" wx:for="{{detail.replies}}" class="item-reply">
       <text style="color:#66ccff">{{item.author.loginname}}</text>
       <text style="float:right;padding-right:30px">{{item.create_at_relative}}</text>
       <view style="margin-top:10px">
-        <template is="wxParse" data="{{wxParseData:replyContent1.nodes}}"/>
+        <template is="wxParse" data="{{wxParseData:replyContent[index].nodes}}"/>
       </view>
     </view>
   </view>
 </view>
 <template is="bottomsubmit"/>
+
+<template name="temp">
+<view>{{content}}</view>
+  
+</template>

@@ -3,6 +3,7 @@ import WxParse from '../../static/wxParse/wxParse.js'
 
 Page({
   data:{
+    replyContent:[]
   },
   onLoad(){
     let cpage = getCurrentPages().slice(-1)
@@ -22,10 +23,11 @@ Page({
         data.last_reply_at = getApp().formatRelativeTime(data.last_reply_at)
         data.replies.forEach(function(item,index){
           item.create_at_relative = getApp().formatRelativeTime(item.create_at)
-          WxParse.wxParse('replyContent'+index, 'html', item.content, that)
+          WxParse.wxParse('replyContent', 'html', item.content, that,undefined,index)
         })
+        console.log(that.data, (that.data.replyContent)[1])
         WxParse.wxParse('content','md',data.content,that)
-        that.setData({detail: data})
+        that.setData({ detail: data, arr: [33, 66, 99]})
         console.log(that.data)
       }
     })

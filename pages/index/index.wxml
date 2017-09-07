@@ -1,8 +1,9 @@
 <!--index.wxml
 这种子模板的数据只能来自父的data
 -->
+<import src="menu.wxml"/>
 <template name="item">
-  <view class="index-item" hover-class="item-hover" bindtap="clickItem" data-id="{{item.id}}">
+  <view class="index-item" hover-class="item-hover" catchtap="clickItem" data-id="{{item.id}}">
     <text>{{item.title}}</text>
     <view class="item-tag-view">
       <text class="item-type" style="background:{{item.top?'#33ff00':''}}">{{item.top?'置顶':types[item.tab]}}</text>
@@ -13,8 +14,11 @@
 </template>
 
 <view class="p-info">
-    <image src="../../static/目录1.png" class="info-img"/>
+    <image src="../../static/目录.png" class="info-img" bindtap="openmenu"/>
 </view>
+
+<template is="menu" data="{{menuanimation}}"/>
+
 
 <!-- <view class="index-container">
   <view class="title">
@@ -25,9 +29,13 @@
 </view> -->
 
 
-<view>
+<scroll-view capture-bind:tap="closemenu1" data-id="menu">
   <view wx:key="{{index}}" wx:for="{{list}}">
     <template is="item" data="{{item,types}}" />
   </view>
-</view>
+</scroll-view>
 
+<view wx:if="{{loading}}" style="display:flex;flex-flow:row nowrap;justify-content:center;font-size:14px;height:50px;align-items:center">
+<icon type="waiting" size="20" color="#808080"/>
+<text>拼命加载中...</text>
+</view>

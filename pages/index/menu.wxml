@@ -1,0 +1,18 @@
+<template name="menu">
+  <view class="menu" animation="{{menuanimation}}">
+    <view>用户名</view>
+    <view>我的消息</view>
+
+    <view>登陆</view>
+
+    <view>板块</view>
+    <view bindtap="requestItemsEvent" data-params="all">最新</view>
+    <view bindtap="requestItemsEvent" data-params="share">分享</view>
+    <view bindtap="requestItemsEvent" data-params="ask">问答</view>
+    <view bindtap="requestItemsEvent" data-params="job">招聘</view>
+    <view bindtap="requestItemsEvent" data-params="good">其他</view>
+    <view>设置</view>
+
+    <view class="menu-last-item">github.com/nicelj</view>
+  </view>
+</template>

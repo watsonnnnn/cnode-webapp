@@ -68,8 +68,39 @@
   position: fixed;
   right:10px;
   top:10px;
+  z-index: 10;
 }
 .info-img{
   height: 32px;
   width:32px;
+}
+
+/* menu */
+.menu{
+  position: fixed;
+  /* right:50px; */
+  right:0;
+  top:0;
+  bottom:0;
+  background: #F7F7F7;
+  z-index: 11;
+  width:70%;
+  border-left: 1px solid #ccc;
+  transform: translateX(540rpx)
+}
+.menu view{
+  height:40px;
+  line-height: 40px;
+  padding-left: 12px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  
+}
+.menu-last-item{
+  bottom: 0;
+  position:fixed;
+  border-top: 1px solid #ccc;
+  right:0;
+  left:0;
+  font-weight: bolder;
 }
