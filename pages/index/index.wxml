@@ -2,11 +2,12 @@
 这种子模板的数据只能来自父的data
 -->
 <import src="menu.wxml"/>
+
 <template name="item">
   <view class="index-item" hover-class="item-hover" catchtap="clickItem" data-id="{{item.id}}">
     <text>{{item.title}}</text>
     <view class="item-tag-view">
-      <text class="item-type" style="background:{{item.top?'#33ff00':''}}">{{item.top?'置顶':types[item.tab]}}</text>
+      <text class="item-type" style="background:{{item.top?'#00cc00':''}}">{{item.top?'置顶':types[item.tab]}}</text>
       <text class="item-author">{{item.author.loginname}}</text>
       <text class="item-time">{{item.create_at}}</text>
     </view>
@@ -17,7 +18,7 @@
     <image src="../../static/目录.png" class="info-img" bindtap="openmenu"/>
 </view>
 
-<template is="menu" data="{{menuanimation}}"/>
+<template is="menu" data="{{menuanimation,accessToken,userInfo}}"/>
 
 
 <!-- <view class="index-container">
@@ -29,7 +30,8 @@
 </view> -->
 
 
-<scroll-view capture-bind:tap="closemenu1" data-id="menu">
+<!-- <scroll-view capture-bind:tap="closemenu1" data-id="menu"> -->
+<scroll-view data-id="menu">
   <view wx:key="{{index}}" wx:for="{{list}}">
     <template is="item" data="{{item,types}}" />
   </view>

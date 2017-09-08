@@ -54,7 +54,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
     bindData[bindName] = transData;
   }
   that.setData(bindData)
-  // that.wxParseImgLoad = wxParseImgLoad;
+  that.wxParseImgLoad = wxParseImgLoad;
   that.wxParseImgTap = wxParseImgTap;
 }
 // 图片点击事件
@@ -78,12 +78,13 @@ function wxParseImgLoad(e) {
   var tagFrom = e.target.dataset.from;
   var idx = e.target.dataset.idx;
   if (typeof (tagFrom) != 'undefined' && tagFrom.length > 0) {
-    calMoreImageInfo(e, idx, that, tagFrom)
+    // calMoreImageInfo(e, idx, that, tagFrom)
   } 
 }
 // 假循环获取计算图片视觉最佳宽高
 function calMoreImageInfo(e, idx, that, bindName) {
   var temData = that.data[bindName];
+  console.log(temData)
   if (!temData || temData.images.length == 0) {
     return;
   }

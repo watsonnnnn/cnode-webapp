@@ -16,7 +16,7 @@
     <text style="font-size:16px;font-weight:bolder">{{detail.title}}</text>
   </view>
   <view style="height:26px;line-height:26px;padding-right:40px;margin-bottom:10px;">
-    <image src="{{detail.author.avatar_url}}" style="height:20px;width:20px;vertical-align:middle"/>
+    <image src="{{detail.author.avatar_url}}" style="height:20px;width:20px;vertical-align:middle"/> 
     <text style="font-size:14px;color:#66ccff">{{detail.author.loginname}}</text>
     <text style="font-size:14px;color:#ccc;opacity:0.8;float:right;">{{detail.last_reply_at}}</text>
   </view>
@@ -33,7 +33,7 @@
     </view>
   </view>
 </view>
-<template is="bottomsubmit"/>
+<template is="bottomsubmit" data="{{canSubmit,isEditing,inputValue}}"/>
 
 <template name="temp">
 <view>{{content}}</view>

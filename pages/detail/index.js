@@ -3,9 +3,19 @@ import WxParse from '../../static/wxParse/wxParse.js'
 
 Page({
   data:{
-    replyContent:[]
+    replyContent:[],
+    isEditing: false,
+    inputValue: ''
+  },
+  onShow(){
+    console.log('show detail')
   },
   onLoad(){
+    console.log('onload')
+    this.setData({canSubmit: !!getApp().globalData.accessToken})
+    wx.showLoading({
+      title: '加载中...',
+    })
     let cpage = getCurrentPages().slice(-1)
     console.log(cpage)
     if(!cpage || !cpage[0] || cpage[0].options.id == 'undefined'){
@@ -25,10 +35,12 @@ Page({
           item.create_at_relative = getApp().formatRelativeTime(item.create_at)
           WxParse.wxParse('replyContent', 'html', item.content, that,undefined,index)
         })
-        console.log(that.data, (that.data.replyContent)[1])
+        // console.log(that.data, (that.data.replyContent)[1])
         WxParse.wxParse('content','md',data.content,that)
-        that.setData({ detail: data, arr: [33, 66, 99]})
-        console.log(that.data)
+        that.setData({ detail: data, arr: [33, 66, 99]},function(){
+          wx.hideLoading()
+        })
+        // console.log(that.data)
       }
     })
   },
@@ -43,13 +55,24 @@ Page({
     console.log('reach bottom')
   },
   submit(){
+    if(!this.data.inputValue){
+      wx.showToast({
+        title: '内容为空',
+        duration:200,
+        icon:'loading'
+      })
+      return false
+    }
+    let that = this
     let id = getCurrentPages().slice(-1)[0].options.id
     let url = `https://cnodejs.org/api/v1/topic/${id}/replies`
     wx.request({
       url,
       method:'POST',
-      content:this.data.inputValue,
-      accesstoken:'token',
+      data:{
+        accesstoken: getApp().globalData.accessToken,
+        content: this.data.inputValue,
+      },
       success(res){
         console.log(res.statusCode)
         if(res.statusCode != 200){
@@ -61,6 +84,7 @@ Page({
           wx.showToast({
             title: '评论成功'
           })
+          that.onLoad()
         }
       },
       fail(){
@@ -71,8 +95,15 @@ Page({
       }
     })
     console.log('submit', this.data.inputValue)
+    this.setData({ inputValue: ''})
   },
   beforesubmit(e){
     this.setData({inputValue: e.detail.value})
+  },
+  focus(){
+    this.setData({isEditing: true})
+  },
+  blur() {
+    this.setData({ isEditing: false })
   }
 })

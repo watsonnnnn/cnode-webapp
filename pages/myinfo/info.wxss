@@ -1,0 +1,30 @@
+page{
+  background: #eeeeee;
+}
+
+.info-reply{
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  padding: 18px 10px;
+  background: #fff;
+  color:#ccc;
+}
+.info-top{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding: 18px 10px;
+  background: #fff
+}
+.info-reply .info-reply-title{
+  font-size: 20px;
+  font-weight: 100;
+  color:black;
+}
+.info-reply-recent{
+  border-bottom:1px solid #ccc;
+  padding:10px 10px;
+  font-size:16px;
+}
+.other-button-hover{
+  background: #ccc;
+}

@@ -1,0 +1,24 @@
+<view style="font-size:16px;padding-top:10px;">
+  <view class="info-top">
+    <view>{{user.loginname}}  {{user.score}}积分</view>
+    <text style="font-size:16px">注册于：{{user.create_moment_at}}</text>
+  </view>
+  <view>
+    <view class="info-reply-recent">最近主题</view>
+    {{}}
+  </view>
+  <view style="margin-bottom:20px">
+    <view class="info-reply-recent">最近回复</view>
+    <block wx:for="{{user.recent_replies}}" wx:key="reply" wx:for-item="reply" wx:for-index="index">
+      <view class="info-reply">
+        <view class="info-reply-title">{{reply.title}}</view>
+        <view style="overflow:hidden">
+        <text style="float:left">{{reply.author.loginname}}</text>
+        <text style="float:right">{{reply.last_reply_fromNow}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <button type="default" loading="{{loading}}" bindtap="logout" hover-class="other-button-hover"> 登出 </button>
+</view>
