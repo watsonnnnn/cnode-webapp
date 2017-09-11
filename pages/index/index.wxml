@@ -15,7 +15,7 @@
 </template>
 
 <view class="p-info">
-    <image src="../../static/目录.png" class="info-img" bindtap="openmenu"/>
+    <image src="http://ogx4oq7wa.bkt.clouddn.com/%E7%9B%AE%E5%BD%95.png" class="info-img" bindtap="openmenu"/>
 </view>
 
 <template is="menu" data="{{menuanimation,accessToken,userInfo}}"/>

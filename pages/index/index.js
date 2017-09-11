@@ -15,7 +15,13 @@ Page({
     tab:'',
   },
   onShow(){
-    console.log('onshow', moment('2016-11-14T06:07:35.238Z').format('YYYY-MM-DD HH:mm:ss'))
+    if (!wx.createSelectorQuery) {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，有部分功能无法使用，请升级到最新微信版本后重试。'
+      })
+      return false
+    }
     let that = this
     wx.createSelectorQuery().select('#menu').boundingClientRect(function(rect){
       that.setData({menuWidth: rect.width})
